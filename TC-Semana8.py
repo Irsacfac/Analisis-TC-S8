@@ -39,7 +39,7 @@ def queensVegas(Array, rRestanets, x):
 def columnasDIsponibles(Array, fila, x):
     disponibles = []
     for columna in range(len(Array)-1, 0, -1):
-        if(Array[columna]):
+        if(Array[columna] and b[columna+fila]):
             disponibles.append(columna)
     return disponibles
     
