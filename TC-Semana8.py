@@ -23,16 +23,14 @@ def swap(A, x, y):
     A[x] = A[y]
     A[y] = temp
 
-a = [0,1,2,3,4]
-e = (N+1) * [True]
-queens(a, 4, N-1)
 
 
 def queensVegas(reinas):
     encontrado = False
     contador = 0
-    while(not encontrado):
+    while(not encontrado and contador<=(reinas*reinas)):
         encontrado = auxQueensVegas([], reinas, reinas-1)
+    return
 
 def auxQueensVegas(Array, rRestantes, x):
     if rRestantes==0:
@@ -55,14 +53,9 @@ def columnasDisponibles(Array, fila, x):
         if(Array[columna] and b[columna+fila] and d[(columna-fila)+x]):
             disponibles.append(columna)
     return disponibles
-    
-def cambio(a):
-    a = not a
-    return a
 
+
+a = [0,1,2,3,4]
+e = (N+1) * [True]
+queens(a, 4, N-1)
 queensVegas(4)
-
-
-def cicloFor(x,n):
-    for i in range(n):
-        x
