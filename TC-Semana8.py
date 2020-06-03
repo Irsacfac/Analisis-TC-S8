@@ -1,12 +1,20 @@
 import random
+from time import time
 
 N = 4
 b = ((2*N)+1) * [True]
 d = ((2*N)-1) * [True]
 
 def queens(A, m, x):
+    tInicial = time()
+    auxQueens(A, m, x, tInicial)
+
+def auxQueens(A, m, x, T):
     if m==0:
         print (A)
+        tFinal = time()
+        tEjecucion = tFinal - T
+        print("El tiempo de ejecución backtracking fue: ", tEjecucion)
     else:
         for i in range (m, 0, -1):
             if (b[A[i]+m] and d[(A[i]-m)+x]):
@@ -28,13 +36,17 @@ def swap(A, x, y):
 def queensVegas(reinas):
     encontrado = False
     contador = 0
+    tInicial = time()
     while(not encontrado and contador<=(reinas*reinas)):
-        encontrado = auxQueensVegas([], reinas, reinas-1)
+        encontrado = auxQueensVegas([], reinas, reinas-1, tInicial)
     return
 
-def auxQueensVegas(Array, rRestantes, x):
+def auxQueensVegas(Array, rRestantes, x, T):
     if rRestantes==0:
         print (Array)
+        tFinal = time()
+        tEjecucion =  tFinal - T
+        print("El tiempo de ejecución LasVegas fue: ", tEjecucion)
         return True
     else:
         colDisponibles = columnasDisponibles(e, rRestantes, x)
@@ -45,7 +57,7 @@ def auxQueensVegas(Array, rRestantes, x):
         b[col+rRestantes] = False
         d[(col-rRestantes)+x] = False
         Array.append(col)
-        auxQueensVegas(Array, rRestantes-1, x)
+        return auxQueensVegas(Array, rRestantes-1, x, T)
             
 def columnasDisponibles(Array, fila, x):
     disponibles = []
@@ -57,5 +69,5 @@ def columnasDisponibles(Array, fila, x):
 
 a = [0,1,2,3,4]
 e = (N+1) * [True]
-queens(a, 4, N-1)
-queensVegas(4)
+queens(a, N, N-1)
+queensVegas(N)
