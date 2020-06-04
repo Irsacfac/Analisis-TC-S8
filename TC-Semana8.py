@@ -1,7 +1,7 @@
 import random
 from time import time
 
-N = 4
+N = 30
 b = ((2*N)+1) * [True]
 d = ((2*N)-1) * [True]
 
@@ -74,7 +74,7 @@ def columnasDisponibles(Array, fila, x, B, D, E,):
     return disponibles
 
 
-a = [0,1,2,3,4]
+a = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 e = (N+1) * [True]
 queens(a, N, N-1)
 queensVegas(N)
